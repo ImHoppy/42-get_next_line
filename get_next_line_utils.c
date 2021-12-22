@@ -6,7 +6,7 @@
 /*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 12:35:01 by mbraets           #+#    #+#             */
-/*   Updated: 2021/12/20 17:50:05 by mbraets          ###   ########.fr       */
+/*   Updated: 2021/12/22 12:59:11 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ft_strncpy(result, s1, size1);
 	ft_strncpy(result + size1, s2, size2);
-	if (!s1)
-		free(s1);
 	if (s2)
 		free(s2);
 	return (result);
