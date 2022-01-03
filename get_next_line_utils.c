@@ -6,7 +6,7 @@
 /*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 12:35:01 by mbraets           #+#    #+#             */
-/*   Updated: 2021/12/22 12:59:11 by mbraets          ###   ########.fr       */
+/*   Updated: 2022/01/03 14:24:47 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strlen(char *s)
 	int	n;
 
 	n = 0;
+	if (!s)
+		return (0);
 	while (s[n])
 		n++;
 	return (n);
@@ -41,7 +43,7 @@ char	*ft_strncpy(char *dst, char *src, int len)
 	int	i;
 
 	i = 0;
-	while (src[i] && i < len)
+	while (i < len)
 	{
 		dst[i] = src[i];
 		i++;
@@ -63,7 +65,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ft_strncpy(result, s1, size1);
 	ft_strncpy(result + size1, s2, size2);
-	if (s2)
-		free(s2);
+	if (s1)
+		free(s1);
 	return (result);
 }
