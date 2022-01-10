@@ -6,7 +6,7 @@
 /*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 12:35:48 by mbraets           #+#    #+#             */
-/*   Updated: 2021/12/22 12:59:00 by mbraets          ###   ########.fr       */
+/*   Updated: 2022/01/10 07:23:52 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int		ft_strlen(char *s);
 int		ft_str_eol(char *s);
-char	*ft_strncpy(char *dst, char *src, int len);
+char	*ft_strncpy(char *dst, char *src, int len, char *tmp);
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_next_line(int fd);
 

@@ -6,7 +6,7 @@
 /*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 12:37:31 by mbraets           #+#    #+#             */
-/*   Updated: 2022/01/03 14:54:05 by mbraets          ###   ########.fr       */
+/*   Updated: 2022/01/10 07:44:59 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,36 @@ char	*linejoin(char *buffer, char *line, int len)
 	save = malloc(sizeof(char) * (len + 1));
 	if (!save)
 		return (NULL);
-	save = ft_strncpy(save, buffer, len);
+	ft_strncpy(save, buffer, len, NULL);
 	line = ft_strjoin(line, save);
 	free(save);
 	return (line);
 }
 
-char	*while_read(char *buffer, int count, int fd, int len)
+char	*while_read(char *b, int count, int fd, int len)
 {
 	char	*line;
-	int		index;
+	int		i;
 
 	line = NULL;
-	while (count || buffer[0] != '\0')
+	while (count || b[0] != '\0')
 	{
-		buffer[count + len] = '\0';
-		index = ft_str_eol(buffer);
-		if (index == -1)
+		b[count + len] = '\0';
+		i = ft_str_eol(b);
+		if (i == -1)
 		{
-			line = linejoin(buffer, line, len + count);
+			line = linejoin(b, line, len + count);
 			if (!line)
 				return (NULL);
-			count = read(fd, buffer, BUFFER_SIZE);
+			count = read(fd, b, BUFFER_SIZE);
 			len = 0;
 		}
 		else
 		{
-			line = linejoin(buffer, line, index + 1);
+			line = linejoin(b, line, i + 1);
 			if (!line)
 				return (NULL);
-			ft_strncpy(buffer, buffer + index + 1, BUFFER_SIZE - index - 1);
-			return (line);
+			return (ft_strncpy(b, b + i + 1, BUFFER_SIZE - i - 1, line));
 		}
 	}
 	return (line);
@@ -63,7 +62,6 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			len;
 
-	line = NULL;
 	len = ft_strlen(buffer);
 	if (fd < 0)
 		return (NULL);
@@ -73,47 +71,3 @@ char	*get_next_line(int fd)
 	line = while_read(buffer, count, fd, len);
 	return (line);
 }
-
-// void gnl(int fd, char const *str)
-// {
-// 	static int i;
-// 	printf("Test %d\n", ++i);
-// 	char *s = get_next_line(fd);
-// 	// if (s == str)
-// 		printf("%s%s", s, str);
-// 	// else
-// 	// 	printf("false, %s != %s", s, str);
-// }
-// #include <fcntl.h>
-// int main(int argc, char **argv)
-// {
-// 	char *s;
-// 	int fd;
-// 	if (argc > 1)
-// 	{
-
-// 			fd = open("gnlTester/files/43_with_nl", 0);
-// 			gnl(fd, "012345678901234567890123456789012345678901\n");
-// 			gnl(fd, "2");
-// 			gnl(fd, NULL);
-// 			close(fd);
-// 			return (0);
-		
-// 		fd = open(argv[1], 0);
-// 		while ((s = get_next_line(fd)) && *s != '\0')
-// 		{
-// 			printf("%p: %s", s, s);
-// 			free(s);
-// 		}
-// 	}
-// 	else
-// 	{
-// 		fd = open("blanks", 0);
-// 		s = get_next_line(fd);
-// 		printf("%s", s);
-// 		// free(s);
-// 	}
-// 	// while (1)
-// 		// ;
-// 	return (0);
-// }

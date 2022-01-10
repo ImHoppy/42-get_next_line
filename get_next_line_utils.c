@@ -6,7 +6,7 @@
 /*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 12:35:01 by mbraets           #+#    #+#             */
-/*   Updated: 2022/01/03 14:24:47 by mbraets          ###   ########.fr       */
+/*   Updated: 2022/01/10 07:24:00 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_str_eol(char *s)
 	return (-1);
 }
 
-char	*ft_strncpy(char *dst, char *src, int len)
+char	*ft_strncpy(char *dst, char *src, int len, char *tmp)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ char	*ft_strncpy(char *dst, char *src, int len)
 		i++;
 	}
 	dst[i] = '\0';
-	return (dst);
+	return (tmp);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -60,11 +60,11 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	size1 = ft_strlen(s1);
 	size2 = ft_strlen(s2);
-	result = malloc(sizeof(char) * (size1 + size2));
+	result = malloc(sizeof(char) * (size1 + size2) + 1);
 	if (!result)
 		return (NULL);
-	ft_strncpy(result, s1, size1);
-	ft_strncpy(result + size1, s2, size2);
+	ft_strncpy(result, s1, size1, NULL);
+	ft_strncpy(result + size1, s2, size2, NULL);
 	if (s1)
 		free(s1);
 	return (result);
