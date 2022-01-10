@@ -6,12 +6,11 @@
 /*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 12:37:31 by mbraets           #+#    #+#             */
-/*   Updated: 2022/01/10 07:44:59 by mbraets          ###   ########.fr       */
+/*   Updated: 2022/01/10 07:51:21 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*linejoin(char *buffer, char *line, int len)
 {
