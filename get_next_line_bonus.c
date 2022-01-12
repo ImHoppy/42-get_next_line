@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoppy <hoppy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mbraets <mbraets@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 09:59:35 by hoppy             #+#    #+#             */
-/*   Updated: 2022/01/11 10:07:22 by hoppy            ###   ########.fr       */
+/*   Updated: 2022/01/12 16:20:59 by mbraets          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*while_read(char *b, int count, int fd, int len)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[256][BUFFER_SIZE + 1];
+	static char	buffer[1024][BUFFER_SIZE + 1];
 	int			count;
 	char		*line;
 	int			len;
